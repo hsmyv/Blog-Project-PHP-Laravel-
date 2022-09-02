@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Providers;
-
+use App\Models\News;
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\View;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+    View::composer(['cedvel', 'create'], function($view){
+       $view->with('news', News::all());
+    });
+        
     }
 }

@@ -1,0 +1,1 @@
+tesdiq etmemisiniz
