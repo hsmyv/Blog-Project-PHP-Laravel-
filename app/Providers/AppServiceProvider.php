@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 use App\Models\News;
+use App\Observers\NewsObserver;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Database\Eloquent\Model;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,9 +25,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+       Model::unguard();
+
     View::composer(['cedvel', 'create'], function($view){
-       $view->with('news', News::all());
-    });
-        
+      $view->with('news', News::all());
+        });
+     News::observe(NewsObserver::class);
     }
+    
 }

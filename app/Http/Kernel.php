@@ -37,11 +37,12 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\SetLanguage::class,
+            \App\Http\Middleware\LogMiddleware::class,
         ],
 
         'api' => [
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            'throttle:api',
+            //'throttle:3,1', //butun route-lara tesir edir(1 deqiqede ancaq 3 defe melumati ceke bilersen)
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];

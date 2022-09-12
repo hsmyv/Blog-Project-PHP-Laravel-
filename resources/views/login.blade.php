@@ -11,7 +11,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-10">
-                    <form class="user" method="post" action="{{route('login-sumbit')}}">
+                    <form class="user" method="POST" action="{{route('login-sumbit')}}">
                         @csrf
                         <h4 class="mb-4">Login</h4>
                             <div class="form-row">
