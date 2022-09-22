@@ -9,14 +9,7 @@ use Illuminate\Validation\ValidationException;
 class userController extends Controller
 {
 
-    // Show main page
-    public function main(){
-        return view('webpage.main');
-    }
-    // Show Register/Create Form
-    public function create(){
-        return view('webpage.frontregister');
-    }
+ 
 
     //Create New User
     public function store(Request $request){
@@ -25,6 +18,7 @@ class userController extends Controller
             'username' => 'required|min:3|unique:users,username',
             'email' => 'required|min:3|unique:users,email',
             'password' => 'required|confirmed|min:6',
+            
             
         ]);
 
@@ -73,6 +67,14 @@ class userController extends Controller
         }
 
 
+   // Show main page
+    public function main(){
+        return view('webpage.maininformation');
+    }
+    // Show Register/Create Form
+    public function create(){
+        return view('webpage.frontregister');
+    }
 
     public function login(){
         return view ("webpage.frontpage");
@@ -95,5 +97,6 @@ class userController extends Controller
     public function testimonial(){
         return view("webpage.testimonial");
     }
+  
    
 }

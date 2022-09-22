@@ -9,9 +9,11 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\PostCommentsController;
+use App\Http\Controllers\AdminPostController;
 use App\Models\News;
 use App\Models\Post;
-
+use App\Models\Category;
+use App\Models\User;
 
 
 
@@ -88,7 +90,7 @@ Route::get('/telebe', function(){
 
     
     Route::post('/mail', [MainController::class, 'mail'])->name('mail');  // mail gondermek funksiyasi 
-
+    Route::post('/letter', [MainController::class, 'letter'])->name('letter');  // mail gondermek funksiyasi 
     
     //Route::get('/giris', [AuthController::class, 'index1'])->name('index-log');   // login sistemi
     //Route::post('/giris', [AuthController::class, 'login'])->name('login');
@@ -101,11 +103,11 @@ Route::get('/telebe', function(){
     Route::get('/blog', [userController::class, 'blog']);
     Route::get('/contact', [userController::class, 'contact']);
     Route::get('/testimonial', [userController::class, 'testimonial']);
-    
+   
   
 
     Route::get('/', function () {
-        return view('webpage.main');
+        return view('webpage.maininformation');
     });
 
     //show register/Create Form
@@ -122,16 +124,37 @@ Route::get('/telebe', function(){
     Route::post('/login', [userController::class, 'authenticate'])->middleware('guest');;
 
 
-   // Route::get('/blog/{post:slug}', [PostsController::class, 'show']);
-    //Route::post('/blog/{post:slug}/comments', [PostCommentsController::class, 'store']);
+   
+Route::post('/blog/posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
     
-    Route::get('/blog', function (){
+
+    Route::get('/blog', [PostsController::class, 'index']);
+
+
+    Route::get('/blog/posts/{post:slug}',[PostsController::class, 'show']); 
+
+    
+    Route::get('/blog/categories/{category:slug}', function (Category $category){
         return view ('webpage.blog' , [
-            'posts' => Post::all()
+            'posts' => $category->posts
         ]);
     });
-    Route::get('/blog/posts/{post:slug}', function (Post $post){
-        return view ('webpage.post' , [
-            'post' => $post
+    Route::get('/blog/authors/{author:username}', function (User $author){
+            return view ('webpage.blog' , [
+                'posts' => $author->posts
         ]);
     });
+
+    
+  Route::middleware('can:admin')->group(function(){
+    // resource adminpostcontrollerin icindeki get post ve s. birbasa burdan oxuyur..
+    Route::resource('/admin/posts', AdminPostController::class); // except funksiyasin da islede bilerdin
+       // Route::get('/admin/posts/create', [AdminPostController::class, 'create']);
+       // Route::post('/admin/posts', [AdminPostController::class, 'store']);
+       // Route::get('/admin/posts', [AdminPostController::class, 'index']);
+       // Route::get('/admin/posts/{post}/edit', [AdminPostController::class, 'edit']);
+       // Route::patch('/admin/posts/{post}', [AdminPostController::class, 'update']);
+       // Route::delete('/admin/posts/{post}', [AdminPostController::class, 'destroy']);
+  });
+   
+   

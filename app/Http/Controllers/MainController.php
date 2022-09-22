@@ -172,4 +172,13 @@ class MainController extends Controller
         });
         return redirect()->back();
      }
+     public function letter(Request $request)
+     {
+        $email = $request->email;
+
+        Mail::send('mail.indexx', ['email'=> $email], function($message) use ($email){
+            $message->to($email)->subject('HSTUDIO');
+        });
+         return redirect()->back();
+     }
 }

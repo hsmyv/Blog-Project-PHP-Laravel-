@@ -35,14 +35,17 @@
             <div class="col-lg-3 col-md-6 mb-5">
                 <h4 class="text-uppercase text-white mb-4">Newsletter</h4>
                 <p class="mb-4">Volup amet magna clita tempor. Tempor sea eos vero ipsum. Lorem lorem sit sed elitr sed kasd et</p>
+                <form method="POST" action="{{route('letter')}}">
+                    @csrf
                 <div class="w-100 mb-3">
                     <div class="input-group">
-                        <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
+                        <input name="email" type="email" class="form-control border-light" style="padding: 25px;" required="required" placeholder="Your Email">
                         <div class="input-group-append">
-                            <button class="btn btn-primary text-uppercase px-3">Sign Up</button>
+                            <button class="btn btn-primary text-uppercase px-3">Subscribe</button>
                         </div>
                     </div>
                 </div>
+                </form>
                 <i>Lorem sit sed elitr sed kasd et</i>
             </div>
         </div>
