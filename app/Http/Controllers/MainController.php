@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 class MainController extends Controller
+
+//---------------------- Sadece oyrendiyim vaxti yazdigim kodlar --------------------//
 {
 
     public function index1(){
