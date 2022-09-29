@@ -18,9 +18,9 @@
             <p align= "justify" class="text-dark mb-4">{{__("Any business that wants digital growth needs a strategy to outperform its competitors on search engines and social media platforms. That’s when digital marketing agencies come into the equation. These agencies help businesses grow digitally, rank better on Search Engine Ranking Pages (SERPs), and maintain their digital presence")}}</p>
 
                 @auth
-                <a href="/about" class="btn btn-dark text-uppercase mt-1 py-3 px-5">{{__("Learn")}}</a>
+                <a href="{{route('about')}}" class="btn btn-dark text-uppercase mt-1 py-3 px-5">{{__("Learn")}}</a>
                 @else
-                <a href="/login" class="btn btn-dark text-uppercase mt-1 py-3 px-5">{{__("Login")}}</a>
+                <a href="{{route('login')}}" class="btn btn-dark text-uppercase mt-1 py-3 px-5">{{__("Login")}}</a>
                 @endauth
 
         </div>
