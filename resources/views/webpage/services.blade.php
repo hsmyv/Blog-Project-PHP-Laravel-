@@ -1,6 +1,7 @@
 <x-main>
+    @auth
 <body>
- 
+
     <!-- Page Header Start -->
     <div class="page-header container-fluid bg-primary d-flex flex-column align-items-center justify-content-center">
         <h1 class="display-3 text-uppercase mb-3">Services</h1>
@@ -52,4 +53,7 @@
     <!-- Services End -->
 
 </body>
+@else
+<meta http-equiv="refresh" content="0.1; '/" />
+@endauth
 </x-main>

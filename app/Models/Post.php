@@ -12,23 +12,30 @@ class Post extends Model
     protected $with = ['category', 'author'];// burda category ile author ona gore var ki, sehifede bir bir postlarin hansi categoryde ve hansi authorda olmasini cagirmasin.
 
     public function scopeFilter($query, array $filters)
-    
+
     {
         $query->when($filters['search'] ?? false, fn ($query, $search) =>
         $query
-        
+
             ->where('title', 'like', '%' . $search . '%')
             ->orWhere('body', 'like', '%'.  $search  . '%')
+            ->orWhere('excerpt', 'like', '%'. $search . '%')
     );
-       // $query->when($filters['category'] ?? false, fn ($query, $category) =>
-         //   $query->whereHas('category', fn($query) =>
-         //       $query->where('slug', $category)
-         //   )
-   // );
-        
+        $query->when($filters['category'] ?? false, fn ($query, $category) =>
+        $query
+        ->whereHas('category', fn($query) => $query->where('slug', $category)
+            )
+    );
 
-    
-          
+        $query->when($filters['author'] ?? false, fn ($query, $category) =>
+        $query
+        ->whereHas('author', fn($query) => $query->where('username', $category)
+            )
+);
+
+
+
+
     }
 
 

@@ -1,3 +1,5 @@
+
+@auth
 <div>
     <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-md-5" style="margin-top: 90px;">
         <div class="row pt-5">
@@ -55,4 +57,4 @@
         <p class="m-0 text-center text-white-50">Designed by <a href="https://htmlcodex.com">HTML Codex</a></p>
     </div>
 </div>
-
+@endauth

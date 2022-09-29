@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
-    
-                <form method="POST" action="/admin/posts" enctype="multipart/form-data">
+<x-main>
+
+    <div class="container col-md-7 ">
+                <form method="POST" action="{{route('adminpost')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-row">
 
@@ -30,10 +22,10 @@
                         </select>
                             <x-form.error name="category"/>
                        </x-form.field1>
+
                     </div>
-                  
-                <x-form.button>Publish</x-form.button>
+                  <x-form.button>Publish</x-form.button>
+
                 </form>
-          
-</body>
-</html>
+    </div>
+</x-main>

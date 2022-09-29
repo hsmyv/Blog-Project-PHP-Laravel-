@@ -1,5 +1,5 @@
 <x-main>
-
+@auth
 <body>
 
 
@@ -100,4 +100,7 @@
     </div>
     <!-- Portfolio End -->
 </body>
+@else
+<meta http-equiv="refresh" content="0.1; '/" />
+@endauth
 </x-main>

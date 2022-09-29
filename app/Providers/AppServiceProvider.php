@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Observers\NewsObserver;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
@@ -29,8 +30,8 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    { 
-       
+    {
+
       Model::unguard();
 
     //View::composer(['cedvel', 'create'], function($view){
@@ -44,8 +45,16 @@ class AppServiceProvider extends ServiceProvider
 
       });
 
+      UrlGenerator::macro('toLanguage', function (string $language) {
+        $currentRoute = app('router')->current();
+        $newRouteParameters = array_merge(
+            $currentRoute->parameters(), compact('language')
+        );
+        return $this->route($currentRoute->getName(), $newRouteParameters);
+    });
+
     }
 
-   
-    
+
+
 }

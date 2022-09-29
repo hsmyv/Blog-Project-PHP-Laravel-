@@ -1,19 +1,20 @@
 
 @props(['comment'])
-
-<article class="flex bg-gray-50 space-x-4">
-    <div class="xles-shrink-0">
-        <img src="https://i.pravatar.cc/60" alt="" width="60" heihgt="60" class="img-fluid rounded mx-auto my-4" >
-    </div>
-    <div>
-        <header class="mb-4">
-        <h3 class = "fond-bold"> {{$comment->author->username  ?? 'unknown'}}</h3> 
-            <p class = "text-xs">
-                posted 
-                <time>{{$comment->created_at->diffForHumans()}}</time>
-            </p>
-        </header>
-        <p>{{ $comment->body}}</p>
-    </div>
-</article>
+<section class="col-span-8 col-start-5 mt-10">
+    <article class="flex bg-gray-100 border border-gray-200 p-6 rounded-xl space-x-4">
+        <div class="flex-shrink-0">
+            <img src="https://i.pravatar.cc/60?u={{$comment->user_id}}" alt="" width="60" height="60" class="rounded-xl" >
+        </div>
+        <div>
+            <header class="mb-4">
+            <h3 class = "fond-bold"> {{$comment->author->username  ?? 'unknown'}}</h3>
+                <p class = "text-xs">
+                    posted
+                    <time>{{$comment->created_at->diffForHumans()}}</time>
+                </p>
+            </header>
+            <p>{{ $comment->body}}</p>
+        </div>
+    </article>
+</section>
 

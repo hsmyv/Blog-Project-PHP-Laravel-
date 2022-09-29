@@ -15,11 +15,11 @@ class MainController extends Controller
     }
 
     //keslerin islemesi ucun kesler funksiyasin yaradiriq
-    public function kesler(){ 
+    public function kesler(){
         $news  = Cache::remember('news', 60*60*24*24 , function(){
             return News::all();
         });
-        
+
         return view ('kesler', compact('news'));
     }
 
@@ -28,10 +28,10 @@ class MainController extends Controller
         $news = News::all();
         return response($news, 200);
     }
-    
-    
+
+
     ///////////////////////////////////////////////////////////////////////////////////////
-    public function index2(){  
+    public function index2(){
         $news  = Cache::remember('news', 60*60*24*24 , function(){ // <---- bu hisse cache silmek ucundur
         return News::all();
         });
@@ -39,8 +39,8 @@ class MainController extends Controller
         return view('news', compact('news'));
     }
 
-    
-    public function store(Request $request){          // sekiliyuklemek 
+
+    public function store(Request $request){          // sekiliyuklemek
         $this->validate($request,[
             'name' => 'required',
             'file' => 'required | mimes:png,jpg,mp4'
@@ -67,7 +67,7 @@ class MainController extends Controller
         }
         $news->save();
         return redirect()->route('index2');
-    
+
     }
 
     public function mediadownload($id){   // hemin sekli komputere yuklemek
@@ -78,7 +78,7 @@ class MainController extends Controller
     public function destroy($id){       // hemin sekli silmek
         $news = News::findOrFail($id);
         if(File::exists($news->file)){
-            
+
             File::delete($news->file);
         }
 
@@ -122,14 +122,14 @@ class MainController extends Controller
         $news->urgent = $request->urgent;
 
         $news->save();
-        
+
         //$token = $news->createToken('token_name')->plainTextToken;  //yarada bilmedik cunki asagida bir dene token yaratmisiq *problem
         //$response = ['token'=> $token, 'news'=> $news];
         return response($news, 201);
      }
 
      public function user(Request $request){
-    
+
 
     $validated = $request->validate([
         'name' => 'required',
@@ -161,24 +161,5 @@ class MainController extends Controller
      }
 
 
-     //// Mail gondermek
-     public function mail(Request $request) 
-     {
-        $subject = $request->subject;
-        $email = $request->email;
-        $name = $request->name;
-        Mail::send('mail.index', ['name'=> $name], function($message) use ($email, $subject){
-            $message->to($email)->subject($subject);
-        });
-        return redirect()->back();
-     }
-     public function letter(Request $request)
-     {
-        $email = $request->email;
 
-        Mail::send('mail.indexx', ['email'=> $email], function($message) use ($email){
-            $message->to($email)->subject('HSTUDIO');
-        });
-         return redirect()->back();
-     }
 }

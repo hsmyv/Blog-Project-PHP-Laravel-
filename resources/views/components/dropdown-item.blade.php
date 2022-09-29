@@ -1,7 +1,7 @@
 @props(['active' => false])
 
 @php
-  $classes = ""  
+  $class = ""
 
 if ($active) $classes
 

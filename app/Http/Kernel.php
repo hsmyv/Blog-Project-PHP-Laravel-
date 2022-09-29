@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
         'notLogin' => \App\Http\Middleware\notLogin::class,
         'isLogin' => \App\Http\Middleware\isLogin::class,
         'emailTesdiq' => \App\Http\Middleware\tesdiqEmail::class,
+        'setlocale' => \App\Http\Middleware\SetLocale::class,
     ];
 }

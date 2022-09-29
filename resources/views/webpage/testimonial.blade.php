@@ -1,6 +1,6 @@
 
 <x-main>
-
+@auth
 
     <!-- Page Header Start -->
     <div class="page-header container-fluid bg-primary d-flex flex-column align-items-center justify-content-center">
@@ -51,12 +51,12 @@
     @auth
     <section class = "col-span-8 col-start-5 mt-10 space-y-6">
         
-    <form method="POST" action="" >
+    <form method="POST" action="/testimonial/comments" >
         @csrf
         <header class = "flex items-center">
             <img src="https://i.pravatar.cc/60" alt="" width="40" height="40" class="rounded-full">
 
-            <h2 class = "ml-4">Do you particapate?</h2>
+            <h2 class = "ml-4">What are you think about?</h2>
         </header>
 
 
@@ -76,5 +76,7 @@
      @endauth
      
     <!-- Testimonial End -->
-
+@else
+<meta http-equiv="refresh" content="0.1; '/" />
+@endauth
 </x-main>

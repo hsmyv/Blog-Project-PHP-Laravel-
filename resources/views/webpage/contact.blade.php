@@ -1,5 +1,14 @@
 <x-main>
-
+    @if (session()->has('success'))
+    <div x-data = "{show:true}"
+        x-init = "setTimeout(() => false, 4000)"
+        x-show = "show"
+        class = "fixed bg-blue-500 text-white py-1 px-5 rounded-xl bottom-5 right-7 text-sm"
+        >
+    <p>{{session('success')}} </p>
+    </div>
+ @endif
+@auth
      <!-- Page Header Start -->
      <div class="page-header container-fluid bg-primary d-flex flex-column align-items-center justify-content-center">
         <h1 class="display-3 text-uppercase mb-3">Contact</h1>
@@ -12,12 +21,12 @@
     <!-- Page Header Start -->
 
 <div class="container-fluid py-5 px-0">
-  
+
     <div class="row mx-0">
         <div class="col-12 px-0" style="height: 500px;">
             <div class="position-relative h-100">
                   <h1 class="display-4 text-uppercase text-center mt-2 mb-2">Contact Us</h1>
-                   
+
                   <!-- About Info Start -->
     <div class="container-fluid py-5">
         <div class="container pb-3">
@@ -45,16 +54,16 @@
                         <i class="fas fa-3x fa-phone-alt text-primary mr-3"></i>
                         <div class="d-flex flex-column">
                             <h5 class="text-uppercase">Call Us</h5>
-                            <p class="m-0">+012 345 6789</p> 
+                            <p class="m-0">+012 345 6789</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-                
+
     <!-- About Info End -->
-   
+
             </div>
         </div>
     </div>
@@ -85,7 +94,7 @@
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
-                        <textarea class="form-control bg-light border-0 py-3 px-4" rows="5" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                        <textarea name="message" class="form-control bg-light border-0 py-3 px-4" rows="5" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="text-center">
@@ -95,6 +104,7 @@
             </div>
         </div>
     </div>
-
-
+@else
+<meta http-equiv="refresh" content="0.1; '/' />
+@endauth
 </x-main>
