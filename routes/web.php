@@ -25,6 +25,8 @@ use App\Models\User;
 
 
 
+
+    //-------------- BLOG WEBSITE -------------------------------//
    Route::redirect('/', 'en');
 
    Route::group([
@@ -66,23 +68,27 @@ use App\Models\User;
 
         Route::get('/blog/categories/{category:slug}',[PostsController::class, 'index'])->name('getcategoryslug');
 
-        //Route::get('/blog/categories/{category:slug}', function ($language, Category $category){
-        //       return view ('webpage.blog' , [
-        //            'posts' => $category->posts,
+        Route::get('/blog/authors/{author:username}',[PostsController::class, 'authorindex'])->name('getauthorusername');
+
+       // Route::get('/blog/categories/{category:slug}', function ($language, Category $category){
+         //      return view ('webpage.blog' , [
+
+          //        'posts' => $category->posts,
          //           'currentCategory' => Category::firstWhere('slug', request('category')),
          //           'categories' => Category::all()
-         //       ]);
+          //      ]);
 
-        //})->name('getcategoryslug');
+     //   })->name('getcategoryslug');
 
-        Route::get('/blog/authors/{author:username}', function ($language, User $author){
-                return view ('webpage.blog' , [
-                    'posts' => $author->posts,
-                    'categories' => Category::all()
+       // Route::get('/blog/authors/{author:username}', function ($language, User $author){
+       //         return view ('webpage.blog' , [
+          //          'posts' => $author->posts,
+        //            'categories' => Category::all()
 
-                ]);
 
-        })->name('getauthorusername');
+           //     ]);
+
+     //   })->name('getauthorusername');
 
         //forgotpassword
         Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
