@@ -11,7 +11,6 @@ You can see my website through the pictures. I am backend developer.  I have add
 ![in login](https://user-images.githubusercontent.com/111653544/194897062-185608f0-d9db-41a4-b6d4-bc26a8d5b8f1.PNG)
 ![login](https://user-images.githubusercontent.com/111653544/194897065-543b96e5-ed89-4a30-be42-4127c94c4a83.PNG)
 ![main login register](https://user-images.githubusercontent.com/111653544/194897068-2a304829-f057-4720-b308-a017232d22e5.PNG)
-![register](https://user-images.githubusercontent.com/111653544/194897075-59e7c465-81b8-4a27-9d32-9b69ed9f9b53.PNG)
 ![saytımın tərcüməsi](https://user-images.githubusercontent.com/111653544/194897079-f3b1651c-f9e6-44ad-9f94-39237ae3b979.PNG)
 ![tərcümə1az](https://user-images.githubusercontent.com/111653544/194897080-a106936e-7ed2-4918-9998-4ee1e148b439.PNG)
 ![tərcümə1en](https://user-images.githubusercontent.com/111653544/194897082-c1f8023f-432e-4ad7-8c71-4b1270a17d86.PNG)
