@@ -54,7 +54,7 @@
     </div>
     <div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
         <p class="mb-2 text-center text-white-50">&copy; <a href="#">Your Site Name</a>. All Rights Reserved.</p>
-        <p class="m-0 text-center text-white-50">Designed by <a href="https://htmlcodex.com">HTML Codex</a></p>
+        <p class="m-0 text-center text-white-50">Designed by <a href="">HSTUDIO</a></p>
     </div>
 </div>
 @endauth

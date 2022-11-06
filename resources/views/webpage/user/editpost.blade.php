@@ -1,11 +1,10 @@
 <x-main>
-    <h1> Manage Posts </h1>
-    <br>
-        <h3><a href="{{route('showpostcreate')}}">Create</a>     <a href="{{route('blog')}}">Back</a></h3>
-    <h1> Edit: </h1>
+
+        <h3>  <a href="{{route('blog')}}">Back</a></h3>
+    <h1> Edit: {{$post->title}} </h1>
 
 
-                    <form method="POST" action="{{route('patchpost', $post->id)}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('userpatchpost', $post->id)}}" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <div class="container col-md">
@@ -35,7 +34,7 @@
                        <x-form.button>Update</x-form.button>
                        <br>
                     <x-form.field1>
-                       <button class="text-uppercase py-2 px-4" ><a href="{{route('showpost')}}">Cancel</a></button>
+                       <button class="text-uppercase py-2 px-4" ><a href="{{route('blog')}}">Cancel</a></button>
                     </x-form.field1>
                     </div>
 

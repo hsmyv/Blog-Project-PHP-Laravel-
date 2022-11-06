@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Mail;
 use DB;
-
+use App\Models\Post;
 class userController extends Controller
 {
 
@@ -99,6 +99,28 @@ class userController extends Controller
             return redirect()->back()->with('success', 'We will send new information about us to your mail');
      }
 
+     //user profile
+     public function editprofile($language, User $author){
+        return view('webpage.user.editprofile')->with('user', auth()->user());
+     }
+
+     public function submiteditprofile($language, User $user){
+
+        $attributes = request()->validate([
+            'name' => ['required', Rule::unique('users')->ignore(auth()->id())],  //<----  eyni user olarsa skip
+            'username' => ['required', Rule::unique('users')->ignore(auth()->id())],
+            'thumbnail' => 'required|image'
+        ]);
+
+        if(isset($attributes['thumbnail'])){
+            $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+        }
+
+       $user->update($attributes);
+
+        return back()->with('success', 'Your profile has been updated successfully');
+     }
+
 
 
    // Show main page
@@ -107,11 +129,10 @@ class userController extends Controller
     }
     // Show Register/Create Form
     public function create(){
-        return view('webpage.frontregister');
+        return view('webpage.authentication.register');
     }
-
     public function showlogin(){
-        return view ("webpage.frontpage");
+        return view ("webpage.authentication.login");
     }
     public function about(){
         return view("webpage.about");

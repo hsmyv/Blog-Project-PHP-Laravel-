@@ -1,14 +1,5 @@
 <x-main>
-@if (session()->has('success'))
-<div x-data = "{show:true}"
-    x-init = "setTimeout(() => false, 4000)"
-    x-show = "show"
-    class = "fixed bg-blue-500 text-white py-1 px-5 rounded-xl bottom-5 right-7 text-sm"
-    >
-  <p>{{session('success')}} </p>
- </div>
 
- @endif
 
 <!-- Header Start -->
 <div class="container-fluid bg-primary py-5 px-0" style="margin-bottom: 90px;">

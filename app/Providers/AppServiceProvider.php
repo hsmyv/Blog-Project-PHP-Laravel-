@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Providers;
-use App\Models\News;
+
 use App\Models\User;
+use App\Models\Post;
 use App\Observers\NewsObserver;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
@@ -11,6 +12,8 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Auth\Access\Response;
+use App\Policies\PostPolicy;
+
 //use Illuminate\Contracts\Auth\Access\Gate\define;
 class AppServiceProvider extends ServiceProvider
 {
@@ -44,6 +47,9 @@ class AppServiceProvider extends ServiceProvider
        return $user->username == "Hasan";
 
       });
+
+  
+
 
       UrlGenerator::macro('toLanguage', function (string $language) {
         $currentRoute = app('router')->current();

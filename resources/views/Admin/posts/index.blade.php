@@ -21,11 +21,15 @@
                                         </div>
                                     </div>
                                 </td>
-
+                                <td>
+                                    {{$post->category->name}}
+                                 </td>
+                                 <td>
+                                    {{$post->author->username}}
+                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="{{route('editpost', $post->id)}}" class="text-blue-500 hover:text-blue-600">Edit</a>
+                                    <a href="{{route('editpost', $post->slug)}}" class="text-blue-500 hover:text-blue-600">Edit</a>
                                 </td>
-
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
 
                                     <form method="POST" action="{{route('deletepost', $post->id)}}">

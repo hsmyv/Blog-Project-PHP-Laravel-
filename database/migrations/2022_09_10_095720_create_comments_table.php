@@ -14,10 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->id(); 
-           $table->unsignedBigInteger('post_id')->constrained()->cascadeOnDelete();
-           $table->unsignedBigInteger('user_id')->constrained()->cascadeOnDelete();
-    
+            $table->id();
+            $table->unsignedBigInteger('post_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('user_id')->constrained()->cascadeOnDelete();
+            $table->integer('parent_id')->index()->nullable();
+            $table->integer('commentable_id')->unsigned();
+            $table->string('commentable_type');
             $table->text('body');
             $table->timestamps();
 

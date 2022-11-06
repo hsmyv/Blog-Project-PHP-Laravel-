@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
 
                 @auth
-                <div class="navbar-nav ml-auto py-0 pr-3 border-right">
+                <div class="navbar-nav ml-auto py-0 pr-1 border-right">
                     <a href="{{route('main')}}" class="nav-item nav-link ">{{__('Home')}}</a>
                     <a href="{{route('about')}}" class="nav-item nav-link ">{{__('About')}}</a>
                     <a href="{{route('services')}}" class="nav-item nav-link">{{__("Services")}}</a>
@@ -22,13 +22,10 @@
                 @else
                     <h6>{{__("Please, log in to learn more about us")}}</h6>
                 @endauth
-                </div>
-
-                <div class="d-none d-lg-flex align-items-center pl-1">
-                    <div style= "display:flex; justify-content:flex-end; width:100%;">
 
                         @auth
 
+                        <img src="{{ asset('storage/' . auth()->user()->thumbnail) }}" alt="" width="80" height="70"  style="border-radius: 50%">
                             <a class="nav-item nav-link active">{{__("Welcome")}}, {{auth()->user()->username}}! </a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle fa fa-2x fa-user-alt text-primary mr-2" data-toggle="dropdown"></a>
@@ -37,11 +34,13 @@
                                     @can('admin')
                                     <a href="{{route('showpost')}}" class="dropdown-item">Dashboard</a>
                                     <a href="{{route('showpostcreate')}}"class="dropdown-item" >Create</a>
+                                    <a href="{{route('showeditprofile')}}" class="dropdown-item">Edit Profile</a>
                                     <form method="POST" action="{{route('logout')}}">
                                         @csrf
                                         <button href="{{route('logout')}}" class="dropdown-item" >Logout</button>
                                         </form>
                                     @else
+                                    <a href="{{route('showeditprofile')}}" class="dropdown-item">Edit Profile</a>
                                     <form method="POST" action="{{route('logout')}}">
                                         @csrf
                                         <button href="{{route('logout')}}" class="dropdown-item" >Logout</button>
@@ -52,22 +51,29 @@
 
                             @inject('app', 'Illuminate\Contracts\Foundation\Application')
                             @inject('urlGenerator', 'Illuminate\Routing\UrlGenerator')
-
-                                    <a  href="{{ $urlGenerator->toLanguage('en') }}" class="nav-item nav-link active" >En</a>
-                                    <a href="{{ $urlGenerator->toLanguage('az') }}" class="nav-item nav-link active" >Az</a>
-
+                            <div class="nav-item dropdown">
+                                <a href="#" class="fa fa-2x fa-language" data-toggle="dropdown"></a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a  href="{{ $urlGenerator->toLanguage('en') }}" class="dropdown-item"> En</a>
+                                    <a href="{{ $urlGenerator->toLanguage('az') }}" class="dropdown-item">Az</a>
+                                </div>
+                            </div>
 
                          </div>
                         @else
+
                             @inject('app', 'Illuminate\Contracts\Foundation\Application')
                             @inject('urlGenerator', 'Illuminate\Routing\UrlGenerator')
                             <a href="{{route('showlogin') }}" class="nav-item nav-link ">{{__('Login')}}</a>
                             <a href="{{route('showregister')}}" class="nav-item nav-link active">{{__('Register')}}</a>
                             <i class="fa fa-2x fa-user-alt text-primary mr-2"></i>
-                          
+                            <div class="nav-item dropdown">
+                                <a href="#" class="fa fa-2x fa-language" data-toggle="dropdown"></a>
+                                <div class="dropdown-menu rounded-1 m-0">
                                     <a  href="{{ $urlGenerator->toLanguage('en') }}" class="nav-item nav-link active" >En</a>
                                     <a  href="{{ $urlGenerator->toLanguage('az') }}" class="nav-item nav-link active" >Az</a>
-
+                                </div>
+                            </div>
                         @endauth
 
                     </div>

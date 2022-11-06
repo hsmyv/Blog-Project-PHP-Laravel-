@@ -28,14 +28,23 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 
 <body>
+
     <!-- Navbar Start -->
     <x-navbar/>
     <!-- Navbar End -->
+@if (session()->has('success'))
+<div x-data = "{show:true}"
+    x-init = "setTimeout(() => false, 1000)"
+    x-show = "show"
+    class = "fixed bg-blue-500 text-white py-1 px-5 rounded-xl bottom-50 right-7 text-sm"
+    >
+  <p>{{session('success')}} </p>
+ </div>
 
+ @endif
    {{ $slot }}
 
 

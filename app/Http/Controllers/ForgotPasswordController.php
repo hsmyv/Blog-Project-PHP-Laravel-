@@ -15,7 +15,7 @@ class ForgotPasswordController extends Controller
 {
     public function showForgetPasswordForm()
     {
-       return view('webpage.forgetpassword');
+       return view('webpage.authentication.forgetpassword');
     }
 
     /**
@@ -52,7 +52,7 @@ class ForgotPasswordController extends Controller
     {
         $token = $request->token;
 
-       return view('webpage.edit')->with(
+       return view('webpage.authentication.edit')->with(
         ['token' => $token, 'email' => $request->email ]);
     }
 
@@ -84,8 +84,7 @@ class ForgotPasswordController extends Controller
         $user = User::where('email', $request->email)
                     ->update(['password' => Hash::make($request->password)]);
 
-        DB::table('password_resets')->where(['email'=> $request->email])->delete();
-
+        DB::table('password_resets')->where(['email', $request->email])->delete();
         return redirect()->route('showlogin')->with('message', 'Your password has been changed!');
     }
 }

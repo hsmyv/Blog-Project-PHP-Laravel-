@@ -14,7 +14,7 @@
         <!-- Password input -->
         <div class="form-outline mb-4">
         <label class="form-label" for="loginName">Email</label>
-          <input   name = "email" type="email" id="loginName" class="form-control" >
+          <input   name = "email" type="email" id="loginName" class="form-control">
 
 
           @if ($errors->has('email'))

@@ -9,6 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
+
     protected $with = ['category', 'author'];// burda category ile author ona gore var ki, sehifede bir bir postlarin hansi categoryde ve hansi authorda olmasini cagirmasin.
 
     public function scopeFilter($query, array $filters)
@@ -41,8 +42,24 @@ class Post extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+         return $this->hasMany(Comment::class);
+      // return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');
     }
+
+
+
+
+
+   // public function addComment($attributes){
+
+    //    $comment = (new Comment)->forceFill($attributes);
+    //    $comment->user_id = auth()->id();
+    //    return $this->comments()->save($comment);
+   // }
+
+
+
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -51,4 +68,5 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
 }

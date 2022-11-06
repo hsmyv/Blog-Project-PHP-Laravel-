@@ -17,6 +17,7 @@
         <h3>Search movies: <input name="search" type="text" placeholder="{{__("Search..")}}" value="{{request('search')}}"></h3>
         </form>
 
+
         <div class="relative flex lg:inline-flex items-center bg-blue-100 rounded-xl px-3 py-2">
                 <div x-data="{show: false}" @click.away="show = false">
                     <button @click="show =! show" class="py-2 pl-3 pr-9 text-sm font-semibold w-32 text-left">{{isset($currentCategory) ? ucwords($currentCategory->name) : 'Categories'}}</button>
@@ -32,27 +33,26 @@
                 </div>
                 </div>
         </div>
-
+         <h3><a href="{{route('showcreatepost')}}">Create New Post!</a></h3>
       </div>
-
-
 
 
       <div> <h1 class="text-uppercase m-5 text-center">{{__("Movies")}}</h1>
 
       </div>
-    @if ($posts->count() )
+      <div class="container-fluid">
+    @if ($posts->count())
             @foreach ($posts as $post)
             <x-post-card :post="$post"/>
             <br>
             @endforeach
-            {{$posts->links()}}
+
     @else
         <p class="text-center">No posts yet.</p>
     @endif
-
+      </div>
 @else
 
-<meta http-equiv="refresh" content="0.1; '/' />
+<meta http-equiv="refresh" content="0.1;" '/'>
 @endauth
 </x-main>

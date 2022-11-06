@@ -10,11 +10,27 @@
                     <h2>{{ $post->title}}  </h2>
                     <div class="card-details"><span>published at {{$post->created_at->diffForHumans()}}</span></div>
                     <h5> By <a href="{{route("getauthorusername", $post->author->username)}}" >{{$post->author->username}}<a> in <a href="{{route("getcategoryslug", $post->category->slug)}}">{{$post->category->name}}</a> </h5>
+                    @can('userupdatepost', $post)
+                    <div class="nav-item dropdown">
+                        <a href="#" class="fa fa-cog" data-toggle="dropdown"></a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <div class="container column">
+                                <a href="{{route('showeditpost', $post->slug)}}">Edit</a>
+                                <form method="POST" action="{{route('destroypost', $post->id)}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button style="color:red">Delete</button>
+                                </form>
+                                @endcan
+                                </h4>
+                                </div>
+                        </div>
+                    </div>
                     <img width="500" class="width"src ="{{ asset('storage/' .$post->thumbnail) }}">
                     <div align="justify" class="space-y-4 lg:text-lg leading-loose"><p>{{$post->body}}</p></div>
+                    <h4><a href="{{route('blog')}}">Back</a>
                 </div>
 
-                <h4><a href="{{route('blog')}}">Back</a></h4>
             </div>
         </div>
 
@@ -25,8 +41,9 @@
 
     <form class="border border-gray-200 p-6 rounded-xl" method="POST" action="{{route('postcomment', $post->slug)}}" >
         @csrf
+
         <header class = "flex items-center">
-            <img src="https://i.pravatar.cc/60?u={{auth()->user()->id}}" alt="" width="40" height="40" class="rounded-full">
+            <img src="{{ asset('storage/' . auth()->user()->thumbnail) }}" alt="" width="40" height="40" class="rounded-full">
 
             <h5 class = "ml-4">What are you think about?</h5>
         </header>
@@ -51,9 +68,13 @@
     <a target="blank" href="{{route('showregister')}}" class="hover:underline">Register</a> or
     <a href="{{route('showlogin')}}" class="hover:underline">login</a> to leave a comment</p>
 @endauth
+@if($post->comments->count())
         @foreach($post->comments as $comment)
         <x-post-comments :comment="$comment"/>
         @endforeach
+@else
+<p class="text-center">No comments yet.</p>
+@endif
 </div>
     </section>
 

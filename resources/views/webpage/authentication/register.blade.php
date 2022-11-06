@@ -111,7 +111,7 @@
   </div>
 </div>
 <div class="text-center ">
-  <p>{{__("Already have an account")}}?<a href="{{route('showlogin', app()->getLocale())}}">{{__("Sign in")}}</a></p>
+  <p>{{__("Already have an account")}}?<a href="{{route('showlogin')}}">{{__("Sign in")}}</a></p>
 </div>
   </div>
 </x-main>

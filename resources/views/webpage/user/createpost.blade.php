@@ -1,18 +1,18 @@
 <x-main>
-    <h1> Manage Posts </h1>
+    <h1> Create Post </h1>
     <br>
-  <h3> <a href="{{route('showpost')}}">Back</a></h3>
+    <h3> <a href="{{route('blog')}}">Back</a></h3>
     <h1> Create: </h1>
     <div class="container col-md ">
-                <form method="POST" action="{{route('adminpost')}}" enctype="multipart/form-data">
+                <form method="POST" action="{{route('usercreatepost')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-row">
 
-                        <x-form.input name="title"/>
-                        <x-form.input name="slug"/>
-                        <x-form.textarea name="excerpt"/>
-                        <x-form.input name="thumbnail" type="file"/>
-                        <x-form.textarea name="body"/>
+                        <x-form.input name="title" :value="old('title')"/>
+                        <x-form.input name="slug" :value="old('slug')"/>
+                        <x-form.textarea name="excerpt"> {{old('excerpt')}} </x-form.textarea>
+                        <x-form.input name="thumbnail" type="file" :value="old('thumbnail')"/>
+                        <x-form.textarea name="body"> {{old('body')}} </x-form.textarea>
 
                        <x-form.field1>
                         <x-form.label name="category"/>
