@@ -12,6 +12,9 @@ You can search movies:
 
 ![blog movies search](https://user-images.githubusercontent.com/111653544/194897054-0d420ab0-ecd0-4598-bec2-bb6afd7298b8.PNG)
 ![blog movies](https://user-images.githubusercontent.com/111653544/194897045-7d68cff7-7b6e-4841-809e-f84e17143960.PNG)
+
+You can contact us:
+
 ![contactus](https://user-images.githubusercontent.com/111653544/194897060-25a4a6b4-184d-4070-8b36-03df97f7993e.PNG)
 
 You can create post:
