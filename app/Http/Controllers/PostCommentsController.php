@@ -34,15 +34,17 @@ class PostCommentsController extends Controller
 
 
 
-    public function replyStore($language, Request $request)
+    public function replyStore($language, Post $post,Request $request)
     {
 
-            $reply = new Comment();
+
+
+           $reply = new Comment();
             $reply->body = $request->get('comment_body');
             $reply->author()->associate($request->user());
             $reply->parent_id = $request->get('comment_id');
             $post = Post::find($request->get('post_id'));
-            $post->commentable_user = $request->get('commentable_user');
+            $reply->commentable_user = $request->get('commentable_user');
             $post->comments()->save($reply);
 
             return back();

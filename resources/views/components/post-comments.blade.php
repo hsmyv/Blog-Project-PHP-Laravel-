@@ -1,5 +1,5 @@
 
-@props(['comment'])
+@props(['comment', 'post_id'])
 
 <section class="col-span-8 col-start-5 mt-5 col">
     <article class="flex bg-gray-100 border border-gray-200 p-6 rounded-xl space-x-10">
@@ -30,7 +30,6 @@
 
 
         </a>
-
                 <p class = "text-xs">
                     posted
                     <time>{{$comment->created_at->diffForHumans()}}</time>
@@ -43,9 +42,11 @@
         </div>
     </div>
     </article>
-        @include('webpage.comment.replies_comments')
-    </div>
 
+    </div>
+    <section class="col-span-8 col-start-4 mt-4 col-12">
+            @include('webpage.comment.replies_comments', ['comments' => $comment->replies])
+        </section>
 </section>
 
 

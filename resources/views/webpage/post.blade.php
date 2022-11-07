@@ -60,7 +60,7 @@
 
         </div>
         <div class="flex justify-end mt-10 border-t border-gray-200 pt-6">
-            <button type="submit" class="bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 rounded-2xl hover:bg-blue-600" >Post </button>
+            <button type="submit" class="bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 rounded-2xl hover:bg-blue-600" >Comment</button>
         </div>
     </form>
 @else
@@ -70,8 +70,10 @@
 @endauth
 @if($post->comments->count())
         @foreach($post->comments as $comment)
-        <x-post-comments :comment="$comment"/>
+
+        <x-post-comments :comment="$comment" :post_id="$post->id"/>
         @endforeach
+
 @else
 <p class="text-center">No comments yet.</p>
 @endif

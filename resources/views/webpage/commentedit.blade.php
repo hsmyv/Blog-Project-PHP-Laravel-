@@ -61,10 +61,13 @@
 
 @if($comment->post->comments->count())
         @foreach($comment->post->comments as $comment)
+
         <x-post-comments :comment="$comment"/>
         @endforeach
+
 @else
 <p class="text-center">No comments yet.</p>
 @endif
+
 
 </x-main>

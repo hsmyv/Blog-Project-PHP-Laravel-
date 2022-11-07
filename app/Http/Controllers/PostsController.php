@@ -25,7 +25,7 @@ class PostsController extends Controller
     }
 
     public function index($language, Category $category){
-        
+
         return view ('webpage.blog' ,  [
                 'posts' => Post::latest()->filter(request(['search','category', 'author']))->simplePaginate(10),
                 //'posts' => $category->posts,
