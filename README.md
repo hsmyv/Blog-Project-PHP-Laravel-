@@ -26,3 +26,5 @@ Comment system and nestedComment:
 
 ![what](https://user-images.githubusercontent.com/111653544/194897096-c8390cef-9d60-46fc-ae71-62032a105fb5.PNG)
 ![nestedcomment](https://user-images.githubusercontent.com/111653544/200357448-2940df57-55fc-4e05-97ba-52d34fa86026.PNG)
+Edit and Delete Comment
+![edit and delete comment](https://user-images.githubusercontent.com/111653544/200362642-1cbd8e9c-5c54-425a-b890-a922e8bd9326.PNG)
